@@ -118,7 +118,9 @@ class SiteController extends RestController
                 ['site/confirm','id'=>$user->id, 'key' => $user->auth_key]);
 
 
-            $text = "Ola tudo certo, confirme seu e-mail clicando no link: $url";
+            $username = $user->username;
+
+            $text = "Ola $username, confirme seu e-mail clicando no link: $url";
 
             $confirmation_mail = $this->sendMail($user->email, "phpedromoutinho@gmail.com", $user->username, "Pedro Moutinho", "Confirmação do e-mail", $text);
 
@@ -139,7 +141,9 @@ class SiteController extends RestController
             "text/plain", $text
         );
 
-        $sendgrid = new \SendGrid('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');
+        $env = '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';
+
+        $sendgrid = new \SendGrid($env);
         
         try {
             $response = $sendgrid->send($email);

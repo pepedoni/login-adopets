@@ -1,5 +1,21 @@
 # Adopets Login
 
+## Descrição
+
+API de login com as seguintes funcionalidades
+
+- Registro
+- Confirmação de e-mail
+- Login
+- Login em duas etapas
+- Reset de senha
+- Logout
+- Informações do úsuario
+
+Considerações:
+
+- Números de telefone devem estar no formato [DDI][DDD][TELEFONE]
+
 ## Instalação 
 
 - Rodar um banco mysql na porta 3306 e criar a base adopets
