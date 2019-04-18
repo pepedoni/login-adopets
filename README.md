@@ -15,6 +15,7 @@ API de login com as seguintes funcionalidades
 Considerações:
 
 - Números de telefone devem estar no formato [DDI][DDD][TELEFONE]
+- Collection POSTMAN: https://www.getpostman.com/collections/16e659a049941f3770d1
 
 ## Instalação 
 
