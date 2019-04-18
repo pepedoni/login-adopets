@@ -141,7 +141,7 @@ class SiteController extends RestController
             "text/plain", $text
         );
 
-        $env = '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';
+        $env = '';
 
         $sendgrid = new \SendGrid($env);
         
