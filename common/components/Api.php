@@ -114,10 +114,17 @@ class Api extends Component
 
         $model->updated_at = time();
 
+        $model->confirmation_code = $this->getConfirmationCode();
+
         $model->save(false);
 
         return ($model);
 
+    }
+
+    public function getConfirmationCode() {
+        $confirmation_code = rand ( 1, 9999 );
+        return str_pad($confirmation_code, 4, "0", STR_PAD_LEFT);
     }
 
     public function createAccesstoken($authorization_code)

@@ -37,6 +37,7 @@ CREATE TABLE `access_tokens` (
 CREATE TABLE `authorization_codes` (
 `id` int(11) NOT NULL,
   `code` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `confirmation_code` int(11) DEFAULT NULL,
   `expires_at` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `app_id` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,

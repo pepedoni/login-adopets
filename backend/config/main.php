@@ -52,19 +52,13 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '1/register'=>'site/register',
-                '1/authorize'=>'site/authorize',
-                '1/accesstoken'=>'site/accesstoken',
-                '1/me'=>'site/me',
-                '1/logout'=>'site/logout',
-
-
-                '1/employees'=>'employee/index',
-                '1/employees/view/<id>'=>'employee/view',
-                '1/employees/create'=>'employee/create',
-                '1/employees/update/<id>'=>'employee/update',
-                '1/employees/delete/<id>'=>'employee/delete',
-
+                'api/register'      => 'site/register',
+                'api/authorize'     => 'site/authorize',
+                'api/accesstoken'   => 'site/accesstoken',
+                'api/me'            => 'site/me',
+                'api/logout'        => 'site/logout',
+                'api/requestresetpassword' => 'site/requestresetpassword',
+                'api/resetpassword' => 'site/resetpassword',
 
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',

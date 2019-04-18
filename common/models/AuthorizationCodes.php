@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string $code
+ * @property int $confirmation_code
  * @property int $expires_at
  * @property int $user_id
  * @property string $app_id
@@ -34,6 +35,7 @@ class AuthorizationCodes extends \yii\db\ActiveRecord
             [['code', 'expires_at', 'user_id', 'created_at', 'updated_at'], 'required'],
             [['expires_at', 'user_id', 'created_at', 'updated_at'], 'integer'],
             [['code'], 'string', 'max' => 150],
+            [['confirmation_code'], 'integer', 'max' => 9999],
             [['app_id'], 'string', 'max' => 200],
         ];
     }
@@ -53,7 +55,7 @@ class AuthorizationCodes extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
-    public static function isValid($code)
+    public static function isValid($code, $two_steps = false, $confirmation_code = '')
     {
         $model=static::findOne(['code' => $code]);
 
@@ -61,6 +63,10 @@ class AuthorizationCodes extends \yii\db\ActiveRecord
         {
             Yii::$app->api->sendFailedResponse("Authcode Expired");
             return(false);
+        }
+        else if($model->confirmation_code != $confirmation_code) {
+            Yii::$app->api->sendFailedResponse("Invalid Confirmation Code.");
+            return (false);
         }
         else
             return($model);
