@@ -23,6 +23,7 @@ Considerações:
 - git clone https://github.com/pepedoni/login-adopets.git
 - cd login-adopets
 - composer install
+- ./init
 - ./yii migrate
 - php yii serve --docroot="backend/web/" --port=8080
 
