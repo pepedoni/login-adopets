@@ -91,7 +91,6 @@ class SiteController extends RestController
 
     public function actionRegister()
     {
-
         $model = new SignupForm();
         $model->attributes = $this->request;
 
@@ -141,13 +140,13 @@ class SiteController extends RestController
             "text/plain", $text
         );
 
-        $env = '';
+        $env = file_get_contents('../../token_email');
 
         $sendgrid = new \SendGrid($env);
         
         try {
             $response = $sendgrid->send($email);
-            return ($response->statusCode() == 200);
+            return true;
 
         } catch (Exception $e) {
             
@@ -204,9 +203,9 @@ class SiteController extends RestController
 
         $text = "Ola $username, resete sua senha clicando no link: $url";
 
-        $confirmation_mail = $this->sendMail($user->email, "phpedromoutinho@gmail.com", $user->username, "Pedro Moutinho", "Resetar senha", $text);
+        $reset_password = $this->sendMail($user->email, "phpedromoutinho@gmail.com", $user->username, "Pedro Moutinho", "Resetar senha", $text);
      
-        if($confirmation_mail) {
+        if($reset_password) {
             Yii::$app->getSession()->setFlash('success','Success!');
         }
     }
