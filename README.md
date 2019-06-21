@@ -1,4 +1,4 @@
-# Adopets Login
+# Two-Step Login PHP - Yii2
 
 ## Descrição
 
@@ -29,8 +29,7 @@ Considerações:
 
 Endpoint: http://localhost:8080/api/
 
-## Rotas Públicas
-
+## Rotas
 ### POST /register
 
 - username  => string(255) Nome do usuário 
